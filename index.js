@@ -1,16 +1,3 @@
-
-const  performCalculation = {
-  '/': (firstOperand, secondOperand) => firstOperand / secondOperand,
-
-  '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
-
-  '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
-
-  '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
-
-  '=': (firstOperand, secondOperand) => secondOperand,
-};
-
 /**
  * @class Model
  *
@@ -21,7 +8,18 @@ class Model {
         this.displayValue = '0',
         this.waitingForSecondOperand = false,
         this.firstOperand = null,
-        this.operator=null
+        this.operator=null,
+        this.performCalculation = {
+            '/': (firstOperand, secondOperand) => firstOperand / secondOperand,
+
+            '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
+
+            '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
+
+            '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
+
+            '=': (firstOperand, secondOperand) => secondOperand,
+          }
 
     }
 
@@ -63,7 +61,7 @@ class Model {
       } else if (this.operator){
         
 
-          const result = performCalculation[this.operator](this.firstOperand,inputValue);
+          const result = this.performCalculation[this.operator](this.firstOperand,inputValue);
   
           this.displayValue = String(result);
           this.firstOperand = result;
